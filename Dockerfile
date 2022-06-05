@@ -1,4 +1,5 @@
 FROM alpine:3.16
+COPY --from=rclone/rclone /usr/local/bin/rclone /usr/local/bin/rclone
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN apk add --no-cache python3 ffmpeg && \
     wget -O /usr/bin/youtube-dl "https://yt-dl.org/downloads/latest/youtube-dl" && \
