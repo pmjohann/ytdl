@@ -1,10 +1,20 @@
 #!/bin/sh
 
-# PERFORM SELF-UPDATE
-/usr/bin/youtube-dl -U
-
-# CALL (POSSIBLY) UPDATED BINARY WITH ARGS PASSED VIA CMD
+# CALL YTDL WITH ARGS PASSED VIA CMD
 /usr/bin/youtube-dl $@
+
+# IF DOWNLOAD FAILED
+if test $? -ne 0; then
+
+    # TRY UPDATING TO LATEST VERSION AND RETRY
+    /usr/bin/youtube-dl -U && /usr/bin/youtube-dl $@
+
+    # IF STILL FAILED EXIT
+    if test $? -ne 0; then
+        exit 1
+    fi
+fi
+
 
 # IF RCLONE CONFIG PROVIDED
 if test -f /rclone.conf; then
