@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.17.3
 COPY --from=rclone/rclone /usr/local/bin/rclone /usr/local/bin/rclone
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN apk add --no-cache python3 ffmpeg && \
