@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # CALL YTDL WITH ARGS PASSED VIA CMD
-/usr/bin/youtube-dl $@
+yt-dlp $@
 
 # IF DOWNLOAD FAILED
 if test $? -ne 0; then
 
     # TRY UPDATING TO LATEST VERSION AND RETRY
-    /usr/bin/youtube-dl -U && /usr/bin/youtube-dl $@
+    yt-dlp -U && yt-dlp $@
 
     # IF STILL FAILED EXIT
     if test $? -ne 0; then
