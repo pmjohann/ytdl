@@ -7,7 +7,7 @@ yt-dlp $@
 if test $? -ne 0; then
 
     # TRY UPDATING TO LATEST VERSION AND RETRY
-    yt-dlp -U && yt-dlp $@
+    yt-dlp --update-to nightly && yt-dlp $@
 
     # IF STILL FAILED EXIT
     if test $? -ne 0; then
