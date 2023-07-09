@@ -1,6 +1,6 @@
-ARG YT_DLP_VER=2023.03.04
+ARG YT_DLP_VER=2023.07.06
 
-FROM alpine:3.18
+FROM alpine:3.18.2
 ARG YT_DLP_VER
 
 COPY --from=rclone/rclone /usr/local/bin/rclone /usr/local/bin/rclone
